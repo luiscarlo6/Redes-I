@@ -26,18 +26,6 @@
             </value>
         </entry>
         <entry>
-            <key>207</key>
-            <value idAsString="207">
-                <component1>83</component1>
-                <component2>129</component2>
-                <delay>10</delay>
-                <hwType>CABLE_ETHERNET</hwType>
-                <id>207</id>
-                <interface1>86</interface1>
-                <interface2>131</interface2>
-            </value>
-        </entry>
-        <entry>
             <key>341</key>
             <value idAsString="341">
                 <component1>326</component1>
@@ -47,6 +35,18 @@
                 <id>341</id>
                 <interface1>328</interface1>
                 <interface2>308</interface2>
+            </value>
+        </entry>
+        <entry>
+            <key>207</key>
+            <value idAsString="207">
+                <component1>83</component1>
+                <component2>129</component2>
+                <delay>10</delay>
+                <hwType>CABLE_ETHERNET</hwType>
+                <id>207</id>
+                <interface1>86</interface1>
+                <interface2>131</interface2>
             </value>
         </entry>
         <entry>
@@ -74,18 +74,6 @@
             </value>
         </entry>
         <entry>
-            <key>76</key>
-            <value idAsString="76">
-                <component1>62</component1>
-                <component2>72</component2>
-                <delay>10</delay>
-                <hwType>CABLE_ETHERNET</hwType>
-                <id>76</id>
-                <interface1>66</interface1>
-                <interface2>73</interface2>
-            </value>
-        </entry>
-        <entry>
             <key>351</key>
             <value idAsString="351">
                 <component1>312</component1>
@@ -95,6 +83,18 @@
                 <id>351</id>
                 <interface1>316</interface1>
                 <interface2>320</interface2>
+            </value>
+        </entry>
+        <entry>
+            <key>76</key>
+            <value idAsString="76">
+                <component1>62</component1>
+                <component2>72</component2>
+                <delay>10</delay>
+                <hwType>CABLE_ETHERNET</hwType>
+                <id>76</id>
+                <interface1>66</interface1>
+                <interface2>73</interface2>
             </value>
         </entry>
         <entry>
@@ -302,18 +302,6 @@
             </value>
         </entry>
         <entry>
-            <key>188</key>
-            <value idAsString="188">
-                <component1>170</component1>
-                <component2>129</component2>
-                <delay>10</delay>
-                <hwType>CABLE_ETHERNET</hwType>
-                <id>188</id>
-                <interface1>174</interface1>
-                <interface2>130</interface2>
-            </value>
-        </entry>
-        <entry>
             <key>294</key>
             <value idAsString="294">
                 <component1>83</component1>
@@ -325,42 +313,20 @@
                 <interface2>292</interface2>
             </value>
         </entry>
-    </cablesMap>
-    <componentsMap>
         <entry>
-            <key>68</key>
-            <value idAsString="68">
-                <defaultZoomXPos>1330</defaultZoomXPos>
-                <defaultZoomYPos>363</defaultZoomYPos>
-                <devSettings>
-                    <natConfig/>
-                    <netModType>tcp_ip_netmod</netModType>
-                    <routingTabConfig>
-                        <routingTableItem>
-                            <destination>192.168.4.0/24</destination>
-                            <interfaceName>eth0</interfaceName>
-                        </routingTableItem>
-                        <routingTableItem>
-                            <destination>0.0.0.0/0</destination>
-                            <gateway>192.168.4.1</gateway>
-                            <interfaceName>eth0</interfaceName>
-                        </routingTableItem>
-                    </routingTabConfig>
-                </devSettings>
-                <hwType>END_DEVICE_PC</hwType>
-                <id>68</id>
-                <interface hwComponent="68" idAsString="69">
-                    <cable>74</cable>
-                    <hwType>END_DEVICE_PC</hwType>
-                    <id>69</id>
-                    <ipAddress>192.168.4.2/24</ipAddress>
-                    <isUp>true</isUp>
-                    <macAddress>12-DB-89-E5-DB-55</macAddress>
-                    <name>eth0</name>
-                </interface>
-                <name>pc3</name>
+            <key>188</key>
+            <value idAsString="188">
+                <component1>170</component1>
+                <component2>129</component2>
+                <delay>10</delay>
+                <hwType>CABLE_ETHERNET</hwType>
+                <id>188</id>
+                <interface1>174</interface1>
+                <interface2>130</interface2>
             </value>
         </entry>
+    </cablesMap>
+    <componentsMap>
         <entry>
             <key>0</key>
             <value idAsString="0">
@@ -396,10 +362,10 @@
             </value>
         </entry>
         <entry>
-            <key>70</key>
-            <value idAsString="70">
-                <defaultZoomXPos>1750</defaultZoomXPos>
-                <defaultZoomYPos>13</defaultZoomYPos>
+            <key>68</key>
+            <value idAsString="68">
+                <defaultZoomXPos>1330</defaultZoomXPos>
+                <defaultZoomYPos>363</defaultZoomYPos>
                 <devSettings>
                     <natConfig/>
                     <netModType>tcp_ip_netmod</netModType>
@@ -416,17 +382,17 @@
                     </routingTabConfig>
                 </devSettings>
                 <hwType>END_DEVICE_PC</hwType>
-                <id>70</id>
-                <interface hwComponent="70" idAsString="71">
-                    <cable>75</cable>
+                <id>68</id>
+                <interface hwComponent="68" idAsString="69">
+                    <cable>74</cable>
                     <hwType>END_DEVICE_PC</hwType>
-                    <id>71</id>
-                    <ipAddress>192.168.4.3/24</ipAddress>
+                    <id>69</id>
+                    <ipAddress>192.168.4.2/24</ipAddress>
                     <isUp>true</isUp>
-                    <macAddress>A8-18-2E-B1-DB-DE</macAddress>
+                    <macAddress>12-DB-89-E5-DB-55</macAddress>
                     <name>eth0</name>
                 </interface>
-                <name>pc4</name>
+                <name>pc3</name>
             </value>
         </entry>
         <entry>
@@ -461,6 +427,40 @@
                     <name>eth0</name>
                 </interface>
                 <name>pc1</name>
+            </value>
+        </entry>
+        <entry>
+            <key>70</key>
+            <value idAsString="70">
+                <defaultZoomXPos>1750</defaultZoomXPos>
+                <defaultZoomYPos>13</defaultZoomYPos>
+                <devSettings>
+                    <natConfig/>
+                    <netModType>tcp_ip_netmod</netModType>
+                    <routingTabConfig>
+                        <routingTableItem>
+                            <destination>192.168.4.0/24</destination>
+                            <interfaceName>eth0</interfaceName>
+                        </routingTableItem>
+                        <routingTableItem>
+                            <destination>0.0.0.0/0</destination>
+                            <gateway>192.168.4.1</gateway>
+                            <interfaceName>eth0</interfaceName>
+                        </routingTableItem>
+                    </routingTabConfig>
+                </devSettings>
+                <hwType>END_DEVICE_PC</hwType>
+                <id>70</id>
+                <interface hwComponent="70" idAsString="71">
+                    <cable>75</cable>
+                    <hwType>END_DEVICE_PC</hwType>
+                    <id>71</id>
+                    <ipAddress>192.168.4.3/24</ipAddress>
+                    <isUp>true</isUp>
+                    <macAddress>A8-18-2E-B1-DB-DE</macAddress>
+                    <name>eth0</name>
+                </interface>
+                <name>pc4</name>
             </value>
         </entry>
         <entry>
@@ -554,12 +554,12 @@
                     <netModType>tcp_ip_netmod</netModType>
                     <routingTabConfig>
                         <routingTableItem>
-                            <destination>192.168.1.0/26</destination>
-                            <interfaceName>eth0</interfaceName>
-                        </routingTableItem>
-                        <routingTableItem>
                             <destination>192.168.2.0/26</destination>
                             <interfaceName>eth1</interfaceName>
+                        </routingTableItem>
+                        <routingTableItem>
+                            <destination>192.168.1.0/26</destination>
+                            <interfaceName>eth0</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
                             <destination>0.0.0.0/0</destination>
@@ -729,35 +729,35 @@
                     <netModType>tcp_ip_netmod</netModType>
                     <routingTabConfig>
                         <routingTableItem>
-                            <destination>192.168.1.0/26</destination>
-                            <gateway>192.168.2.1</gateway>
-                            <interfaceName>eth0</interfaceName>
-                        </routingTableItem>
-                        <routingTableItem>
-                            <destination>192.168.2.0/26</destination>
-                            <interfaceName>eth0</interfaceName>
-                        </routingTableItem>
-                        <routingTableItem>
-                            <destination>192.168.5.0/26</destination>
-                            <interfaceName>eth2</interfaceName>
+                            <destination>192.168.7.0/26</destination>
+                            <interfaceName>eth3</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
                             <destination>192.168.3.0/26</destination>
                             <interfaceName>eth1</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
-                            <destination>192.168.7.0/26</destination>
-                            <interfaceName>eth3</interfaceName>
+                            <destination>192.168.5.0/26</destination>
+                            <interfaceName>eth2</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
-                            <destination>192.168.6.0/24</destination>
-                            <gateway>192.168.5.1</gateway>
-                            <interfaceName>eth2</interfaceName>
+                            <destination>192.168.2.0/26</destination>
+                            <interfaceName>eth0</interfaceName>
+                        </routingTableItem>
+                        <routingTableItem>
+                            <destination>192.168.1.0/26</destination>
+                            <gateway>192.168.2.1</gateway>
+                            <interfaceName>eth0</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
                             <destination>192.168.4.0/24</destination>
                             <gateway>192.168.3.1</gateway>
                             <interfaceName>eth1</interfaceName>
+                        </routingTableItem>
+                        <routingTableItem>
+                            <destination>192.168.6.0/24</destination>
+                            <gateway>192.168.5.1</gateway>
+                            <interfaceName>eth2</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
                             <destination>0.0.0.0/0</destination>
@@ -1000,26 +1000,26 @@
                     <netModType>tcp_ip_netmod</netModType>
                     <routingTabConfig>
                         <routingTableItem>
-                            <destination>192.169.3.0/26</destination>
-                            <interfaceName>eth0</interfaceName>
+                            <destination>192.169.2.0/26</destination>
+                            <interfaceName>eth1</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
                             <destination>192.169.4.0/26</destination>
                             <interfaceName>eth2</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
-                            <destination>192.169.2.0/26</destination>
+                            <destination>192.169.3.0/26</destination>
+                            <interfaceName>eth0</interfaceName>
+                        </routingTableItem>
+                        <routingTableItem>
+                            <destination>192.169.1.0/24</destination>
+                            <gateway>192.169.2.1</gateway>
                             <interfaceName>eth1</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
                             <destination>192.169.5.0/24</destination>
                             <gateway>192.169.4.1</gateway>
                             <interfaceName>eth2</interfaceName>
-                        </routingTableItem>
-                        <routingTableItem>
-                            <destination>192.169.1.0/24</destination>
-                            <gateway>192.169.2.1</gateway>
-                            <interfaceName>eth1</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
                             <destination>0.0.0.0/0</destination>
@@ -1342,18 +1342,7 @@
                     <netModType>tcp_ip_netmod</netModType>
                     <routingTabConfig>
                         <routingTableItem>
-                            <destination>192.168.1.0/26</destination>
-                            <gateway>192.168.7.2</gateway>
-                            <interfaceName>eth0</interfaceName>
-                        </routingTableItem>
-                        <routingTableItem>
-                            <destination>192.169.4.0/26</destination>
-                            <gateway>192.169.3.2</gateway>
-                            <interfaceName>eth1</interfaceName>
-                        </routingTableItem>
-                        <routingTableItem>
-                            <destination>192.169.2.0/26</destination>
-                            <gateway>192.169.3.2</gateway>
+                            <destination>192.169.3.0/26</destination>
                             <interfaceName>eth1</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
@@ -1361,18 +1350,24 @@
                             <interfaceName>eth0</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
-                            <destination>192.169.3.0/26</destination>
+                            <destination>192.169.2.0/26</destination>
+                            <gateway>192.169.3.2</gateway>
                             <interfaceName>eth1</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
-                            <destination>192.168.4.0/24</destination>
+                            <destination>192.169.4.0/26</destination>
+                            <gateway>192.169.3.2</gateway>
+                            <interfaceName>eth1</interfaceName>
+                        </routingTableItem>
+                        <routingTableItem>
+                            <destination>192.168.1.0/26</destination>
                             <gateway>192.168.7.2</gateway>
                             <interfaceName>eth0</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
-                            <destination>192.168.6.0/24</destination>
-                            <gateway>192.168.7.2</gateway>
-                            <interfaceName>eth0</interfaceName>
+                            <destination>192.169.1.0/24</destination>
+                            <gateway>192.169.3.2</gateway>
+                            <interfaceName>eth1</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
                             <destination>192.169.5.0/24</destination>
@@ -1380,9 +1375,14 @@
                             <interfaceName>eth1</interfaceName>
                         </routingTableItem>
                         <routingTableItem>
-                            <destination>192.169.1.0/24</destination>
-                            <gateway>192.169.3.2</gateway>
-                            <interfaceName>eth1</interfaceName>
+                            <destination>192.168.6.0/24</destination>
+                            <gateway>192.168.7.2</gateway>
+                            <interfaceName>eth0</interfaceName>
+                        </routingTableItem>
+                        <routingTableItem>
+                            <destination>192.168.4.0/24</destination>
+                            <gateway>192.168.7.2</gateway>
+                            <interfaceName>eth0</interfaceName>
                         </routingTableItem>
                     </routingTabConfig>
                 </devSettings>
@@ -1564,23 +1564,11 @@
     <id>-1</id>
     <lastEditTimestamp>1403464991510</lastEditTimestamp>
     <counter>
-        <nextId>372</nextId>
+        <nextId>379</nextId>
         <nextMacAddress>0</nextMacAddress>
         <nextNumberMap>
             <entry>
-                <key>LINUX_ROUTER</key>
-                <value>24</value>
-            </entry>
-            <entry>
-                <key>LINUX_SWITCH</key>
-                <value>10</value>
-            </entry>
-            <entry>
-                <key>END_DEVICE_WORKSTATION</key>
-                <value>0</value>
-            </entry>
-            <entry>
-                <key>REAL_PC</key>
+                <key>CISCO_SWITCH</key>
                 <value>0</value>
             </entry>
             <entry>
@@ -1588,7 +1576,7 @@
                 <value>0</value>
             </entry>
             <entry>
-                <key>CABLE_OPTIC</key>
+                <key>END_DEVICE_WORKSTATION</key>
                 <value>0</value>
             </entry>
             <entry>
@@ -1596,7 +1584,7 @@
                 <value>0</value>
             </entry>
             <entry>
-                <key>CISCO_SWITCH</key>
+                <key>REAL_PC</key>
                 <value>0</value>
             </entry>
             <entry>
@@ -1608,8 +1596,20 @@
                 <value>0</value>
             </entry>
             <entry>
+                <key>CABLE_OPTIC</key>
+                <value>0</value>
+            </entry>
+            <entry>
                 <key>END_DEVICE_PC</key>
                 <value>22</value>
+            </entry>
+            <entry>
+                <key>LINUX_ROUTER</key>
+                <value>24</value>
+            </entry>
+            <entry>
+                <key>LINUX_SWITCH</key>
+                <value>10</value>
             </entry>
         </nextNumberMap>
     </counter>
