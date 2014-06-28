@@ -6,7 +6,7 @@
 CC = gcc
 RMFLAGS = -fv 
 #CFLAGS = -g -pthread -pedantic -Wextra -Wall -ggdb -Wunreachable-code 
-CFLAGS = -g -pthread -Wall 
+CFLAGS = -g -pthread -Wall -ggdb
 OBJS1 = Operacionesvr_s.o svr_s.o Entrada_s.o
 PROG1 = svr_s
 
@@ -20,4 +20,4 @@ $(PROG1): $(OBJS1)
 	$(CC) $(CFLAGS) -c $<
 
 clean:
-	$(RM) $(RMFLAGS) $(PROG1) $(OBJS1) *.o
+	$(RM) $(RMFLAGS) $(PROG1) $(OBJS1) *.txt *.o
