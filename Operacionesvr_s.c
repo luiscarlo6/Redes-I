@@ -76,7 +76,7 @@ void* Atender_Clientes(void* dat)
   /* Se visualiza lo recibido y se da la orden de escritura en la bitacora */
   printf("\npaquete proveniente de : %s\n",inet_ntoa((registroCliente->idCliente).sin_addr));
   printf("longitud del paquete en bytes: %d\n",numbytes);	
-  printf("el paquete contiene: %s %d\n", buffer, strlen(buffer));
+  printf("el paquete contiene: %s %d\n", buffer, (int)strlen(buffer));
 
   if ((entradaBita=(char*)malloc(sizeof(char)*(numbytes+1)))==NULL) {    
     fprintf(stderr, "No hay memoria disponible: %s\n", strerror(errno));
@@ -89,7 +89,7 @@ void* Atender_Clientes(void* dat)
     if (NULL!=(subcadena=strtok_r(cadena, " ", &buffer2))) {
       strncat(entradaBita,subcadena, strlen(subcadena)+1);
       strncat(entradaBita," ",2);		
-      printf("subcadena: %s %d\n", subcadena, strlen(subcadena));
+      printf("subcadena: %s %d\n", subcadena, (int)strlen(subcadena));
       /*printf("entrada a bitacora(Antes): (%s)\n", entradaBita);*/
     }
   }
@@ -117,7 +117,7 @@ void* Atender_Clientes(void* dat)
     fflush(registroCliente->bitacoraG);
     pthread_mutex_unlock(&candado);
   }
-  printf("entrada a bitacora: (%s) %d -- %d\n", entradaBita, strlen(entradaBita), numbytes);	
+  printf("entrada a bitacora: (%s) %d -- %d\n", entradaBita, (int)strlen(entradaBita), numbytes);	
 
   /*Esto fuerza el buffer de salida del sistema a escribir. Creo que para prueba de escritura será necesario usarlo. 
     Pero cuando se con los 1000 hilos se deberia quitar para mejorar la eficiencia dado que la escritura es en nivel
