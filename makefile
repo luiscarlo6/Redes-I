@@ -24,4 +24,4 @@ $(PROG2): $(OBJS2)
 	$(CC) $(CFLAGS) -c $<
 
 clean:
-	$(RM) $(RMFLAGS) $(PROG1) $(OBJS1) $(PROG2) $(OBJS2) *.o
+	$(RM) $(RMFLAGS) $(PROG1) $(OBJS1) $(PROG2) $(OBJS2) *.o *~ *#

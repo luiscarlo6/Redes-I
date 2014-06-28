@@ -23,7 +23,7 @@ int Abrir_Socket(int nroPuerto,char *nameServer) {
   
   /* Ordenar conexión */
   if (connect(sockfd,(struct sockaddr *) &their_addr,sizeof(their_addr))){
-    perror("Imposible conectar");
+    perror("Imposible conectarse");
     exit(3);
   }
   return sockfd; 
