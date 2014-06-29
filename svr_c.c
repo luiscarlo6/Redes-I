@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     mensaje = Dar_Formato(mensaje);
     printf("%s\n",mensaje);
 
-    /* Creamos el socket */
+
     sockfd=Abrir_Socket(nroPuerto,nameServer);
 
     if ((numbytes=send(sockfd,mensaje,strlen(mensaje),0))==-1){
