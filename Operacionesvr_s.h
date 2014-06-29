@@ -14,7 +14,7 @@
 #define NROCAMPOS 5
 #define FALSE 0
 #define TRUE !FALSE
-#define TO "metaleones@gmail.com"
+#define TO "09-11020@ldc.usb.ve"
 #define FROM "svr_s"
 #define SUBJECT "Alerta"
 #ifndef __OPERACIONESERV_H_H__

@@ -28,7 +28,6 @@ int main(int argc, char *argv[])
     return FALSE;
   }
   memset(mensaje, 0, sizeof(mensaje));
-  system("./svr_c");
   while(TRUE){
     sleep(1);
     fflush(stdin);
