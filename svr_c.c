@@ -1,8 +1,8 @@
 /*
  * Ejemplo de cliente de chat simple con datagramas (UDP).
  *
- * Leandro Lucarella - Copyleft 2004
- * Basado en diversos ejemplos públicos.
+ * 
+ * 
  *
  */
 #include "Operacionesvr_c.h"
