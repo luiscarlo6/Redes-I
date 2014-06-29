@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
   memset(mensaje, 0, sizeof(mensaje));
 
   while(1){
+    sleep(1);
     scanf("%[^\n]",mensaje);
     fflush(stdin);
     getchar();
@@ -46,10 +47,10 @@ int main(int argc, char *argv[])
       perror("Error de envio");
       exit(4);
     }
-    close(sockfd);
-   
+    /* cierro socket */  
+    close(sockfd);   
   }
-  /* cierro socket */  
+
   free(mensaje);
   free(nameServer);
   exit (0);
