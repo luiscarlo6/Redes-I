@@ -155,6 +155,7 @@ int procesarMensaje(FILE *bitacoraA, FILE* bitacoraG,
 	pthread_mutex_lock(&candado);	
 	fprintf(bitacoraA, "%s\n", entradaBita);
 	fflush(bitacoraA);
+	sendmail(TO,FROM,SUBJECT, entradaBita);
 	pthread_mutex_unlock(&candado);
 	cent=FALSE;
       }
@@ -175,7 +176,7 @@ int procesarMensaje(FILE *bitacoraA, FILE* bitacoraG,
       pthread_mutex_unlock(&candado);
     }
 
-    printf("entrada Final a bitacora: (%s) %d -- %d\n", entradaBita, strlen(entradaBita), numbytes);	
+    printf("entrada Final a bitacora: (%s) %d -- %d\n", entradaBita, (int)strlen(entradaBita), numbytes);	
     free(entradaBita);
     subcadena=NULL;
     cadena=NULL;		
@@ -365,4 +366,24 @@ int compararMensajes(char *palabra, char *p) {
     return FALSE;
   else 
     return TRUE;
+}
+
+
+int sendmail(const char *to, const char *from, const char *subject, const char *message)
+{
+    int retval = -1;
+    FILE *mailpipe = popen("/usr/lib/sendmail -t", "w");
+    if (mailpipe != NULL) {
+        fprintf(mailpipe, "To: %s\n", to);
+        fprintf(mailpipe, "From: %s\n", from);
+        fprintf(mailpipe, "Subject: %s\n\n", subject);
+        fwrite(message, 1, strlen(message), mailpipe);
+        fwrite(".\n", 1, 2, mailpipe);
+        pclose(mailpipe);
+        retval = 0;
+     }
+     else {
+         perror("Failed to invoke sendmail");
+     }
+     return retval;
 }

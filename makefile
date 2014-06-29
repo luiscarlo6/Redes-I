@@ -12,7 +12,7 @@ PROG1 = svr_s
 PROG2 = svr_c
 OBJS2 = svr_c.o Operacionesvr_c.o Entrada_c.o
 
-all : $(PROG1) $(PROG2)
+all :clean $(PROG1) $(PROG2)
 
 $(PROG1): $(OBJS1)
 		$(CC) $(CFLAGS) $(OBJS1) -o $(PROG1)

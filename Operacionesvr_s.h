@@ -14,7 +14,9 @@
 #define NROCAMPOS 5
 #define FALSE 0
 #define TRUE !FALSE
-#define TO "luiscarlo6@gmail.com"
+#define TO "metaleones@gmail.com"
+#define FROM "svr_s"
+#define SUBJECT "Alerta"
 #ifndef __OPERACIONESERV_H_H__
 #define __OPERACIONESERV_H_H__
 
@@ -72,5 +74,7 @@ int destruirResumen(char** resu, int tam);
 int destruirInformes(Msg *caj, int tam);
 
 int compararMensajes(char *palabra, char *p);
+
+int sendmail(const char *to, const char *from, const char *subject, const char *message);
 
 #endif
