@@ -15,6 +15,22 @@
 #ifndef __OPERACIONESERV_H_H__
 #define __OPERACIONESERV_H_H__
 
+static char *mensajesValidos[] = {"Communication Offline",
+				  "Communication error",
+				  "Mensaje Desconocido",
+				  "Low Cash alert",
+				  "Running Out of notes in cassette",
+				  "empty",
+				  "Service mode entered",
+				  "Service mode left",
+				  "device did not answer as expected",
+				  "The protocol was cancelled",
+				  "Low Paper warning",
+				  "Printer Error",
+				  "Paper-out condition",
+				  "Modo Recuperacion",
+				  "Fin Recuperacion" };
+
 
 int Abrir_Socket(int nroPuerto, char *nameServer);
 

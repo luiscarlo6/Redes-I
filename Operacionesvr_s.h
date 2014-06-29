@@ -20,48 +20,48 @@
 
 /*Estructura para datos entrantes de los hilos*/
 typedef struct {
-	int sockCliente;
-	FILE *bitacoraG;
-	FILE *bitacoraA;
-	struct sockaddr_in idCliente;
+  int sockCliente;
+  FILE *bitacoraG;
+  FILE *bitacoraA;
+  struct sockaddr_in idCliente;
 } Args;
 
 //typedef Argu Args;	
 
 /*Estructura para datos salientes de los hilos*/
 typedef struct {
-	int recuperacion;
-	char **mensajeArreglo;
-	char *mensaje;
-	int nroMensajes;
-	struct sockaddr_in idCliente;
+  int recuperacion;
+  char **mensajeArreglo;
+  char *mensaje;
+  int nroMensajes;
+  struct sockaddr_in idCliente;
 } Msg;
 
 static char *mensajesErrores[] = {"Communication Offline",
-		"Communication error",
-		"Mensaje Desconocido",
-		"Low Cash alert",
-		"Running Out of notes in cassette",
-		"empty",
-		"Service mode entered",
-		"Service mode left",
-		"device did not answer as expected",
-		"The protocol was cancelled",
-		"Low Paper warning",
-		"Printer Error",
-		"Paper-out condition",
-		"Modo Recuperacion",
-		"Fin Recuperacion" };
+				  "Communication error",
+				  "Mensaje Desconocido",
+				  "Low Cash alert",
+				  "Running Out of notes in cassette",
+				  "empty",
+				  "Service mode entered",
+				  "Service mode left",
+				  "device did not answer as expected",
+				  "The protocol was cancelled",
+				  "Low Paper warning",
+				  "Printer Error",
+				  "Paper-out condition",
+				  "Modo Recuperacion",
+				  "Fin Recuperacion" };
 
 int Abrir_Socket(int nroPuerto);
 
 void* Atender_Clientes(void* dat);
 
 int asignarDatosEntrantes(Args *caj, int sockCli, 
-	struct sockaddr_in idCli, FILE *bitaG, FILE *bitaA);
+			  struct sockaddr_in idCli, FILE *bitaG, FILE *bitaA);
 
 int procesarMensaje(FILE *bitacoraA, FILE* bitacoraG, 
-		char* buffer, int numbytes, char* salida, int *recuperar);
+		    char* buffer, int numbytes, char* salida, int *recuperar);
 
 Msg* modoRecuperacion(int *recuperar, Args *regCliente);
 

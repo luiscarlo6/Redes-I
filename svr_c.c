@@ -29,10 +29,10 @@ int main(int argc, char *argv[])
   }
   memset(mensaje, 0, sizeof(mensaje));
 
-  while(1){
+  while(TRUE){
     sleep(1);
-    scanf("%[^\n]",mensaje);
     fflush(stdin);
+    scanf("%[^\n]",mensaje);
     getchar();
     if (strncmp(mensaje,"",1)==0){
       break;

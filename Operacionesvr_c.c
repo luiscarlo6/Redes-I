@@ -43,10 +43,6 @@ char* Dar_Formato(char *mensaje){
   struct tm *tlocal = localtime(&tiempo);
   char output[128];
   strftime(output,128,"%H:%M %d/%m/%y",tlocal);
-  
-  // strncat(msj,&pid);
-  //  free(msj);
-
   sprintf(msj,"%d ATM %s %s", getpid(),output,mensaje);
   free(mensaje);
   return msj;
