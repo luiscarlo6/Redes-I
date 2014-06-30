@@ -1,5 +1,5 @@
 /**
-  * Declaracion de las funciones y constantes del programa svr_c
+  * Implementación de las funciones y constantes del programa svr_c
   *
   * @file    Operacionesvr_c.c
   * @author  Luiscarlo Rivera 09-11020, Daniel Leones 09-1097
@@ -11,7 +11,7 @@
 /**
  * Envia un mensaje al servidor
  * @param  nroPuerto  Número del puerto del servidor
- * @param  nameServer Nombre o dirección donde se ejecute el servidor
+ * @param  he Nombre del servidor al que se enviara el mensaje
  * @param  mensaje Mensaje a enviar al servidor
  * @return 0 si se envió el mensaje, 1 si falló
  */
@@ -19,14 +19,6 @@ int enviar_mensaje(int nroPuerto,struct hostent *he,char *mensaje) {
   int sockfd; /* descriptor para el socket */
   int numbytes; /* conteo de bytes a escribir */
   struct sockaddr_in their_addr; /* direccion IP y numero de puerto local */
-  //  struct hostent *he; /* para obtener nombre del host */
-
-  /* convertimos el hostname a su direccion IP */
-  /* if ((he=gethostbyname(nameServer)) == NULL) { */
-  /*   perror("gethostbyname"); */
-  /*   //    exit(1); */
-  /*   return -1; */
-  /* } */
 
   if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
     perror("socket");
@@ -47,8 +39,6 @@ int enviar_mensaje(int nroPuerto,struct hostent *he,char *mensaje) {
     return -1;
   }
 
-  //  sockfd=Abrir_Socket(nroPuerto,nameServer);
-  
   if ((numbytes=send(sockfd,mensaje,strlen(mensaje),0))==-1){
     perror("Error de envio");
     //    exit(4);
@@ -59,6 +49,12 @@ int enviar_mensaje(int nroPuerto,struct hostent *he,char *mensaje) {
   return 0; 
 }
 
+/**
+ * Abre un socket para enviar información
+ * @param  nroPuerto  Número del puerto del servidor
+ * @param  he Nombre del servidor al que se enviara el mensaje
+ * @return Descriptor del socket si tuvo exito, -1 si falló
+ */
 int Abrir_Socket(int nroPuerto,struct hostent *he) {
   int sockfd; /* descriptor para el socket */
   struct sockaddr_in their_addr; /* direccion IP y numero de puerto local */
@@ -77,7 +73,7 @@ int Abrir_Socket(int nroPuerto,struct hostent *he) {
   
   /* Ordenar conexión */
   if (connect(sockfd,(struct sockaddr *) &their_addr,sizeof(their_addr))){
-    perror("Imposible conectarse");
+    perror("Imposible conec tarse");
     //    exit(3);
     return -1;
   }
@@ -92,6 +88,12 @@ char* Pedir_Memoria(int tam){
   }
   return str;
 }
+
+/**
+ * Formatea un string para ser soportado por svr_s
+ * @param  mensaje Mensaje sin formato a envíar
+ * @return el mensaje formateado 
+ */
 char* Dar_Formato(char *mensaje){
   char *msj = Pedir_Memoria(BUFFER_LEN);
   time_t tiempo = time(0);
@@ -103,6 +105,12 @@ char* Dar_Formato(char *mensaje){
   return msj;
 }
 
+/**
+ * Rutina de recuperación del svr_c
+ * @param  nroPuerto puerto de conexion al servidor
+ * @param  he Nombre del servidor al que se enviara el mensaje
+ * @return 0 si tuvo exito -1 si no
+ */
 int recuperar(int nroPuerto, struct hostent *he){
   FILE *archRec = fopen(RECUPERA,"r");
   char *mensaje = Pedir_Memoria(BUFFER_LEN);
@@ -111,8 +119,10 @@ int recuperar(int nroPuerto, struct hostent *he){
     fgets(mensaje,BUFFER_LEN,archRec);
     mensaje[strlen(mensaje)-1]='\0';
     printf("%s\n",mensaje);
-    if (enviar_mensaje(nroPuerto,he,mensaje)==-1)
+    if (enviar_mensaje(nroPuerto,he,mensaje)==-1){
+      fclose(archRec);
       return -1;
+    }
   }
   fclose(archRec);
   free(mensaje);

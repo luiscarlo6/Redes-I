@@ -83,7 +83,8 @@ int main(int argc, char *argv[])
       if (sockfd!=-1){
 	close(sockfd);
 	fclose(archRec);
-	recuperar(nroPuerto, he);
+	if (recuperar(nroPuerto, he)==-1)
+	  continue;
 	system("rm recuperacion.txt");
 	enRecuperacion=FALSE;
 	continue;
@@ -95,9 +96,6 @@ int main(int argc, char *argv[])
       }
     }
   }
-  /* start = clock(); */
-  /* diff = clock() - start; */
-  /* segs = (diff * 1000 / CLOCKS_PER_SEC)/1000; */
   free(mensajeRecuperacion);
   free(mensaje);
   free(nameServer);
