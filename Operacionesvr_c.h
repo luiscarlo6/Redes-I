@@ -10,16 +10,19 @@
 #include <sys/types.h>
 #define BUFFER_LEN 1024
 #define MAXNOSERVIDOR 30
-#define BUFFER_LEN 1024
+#define RECUPERA "recuperacion.txt"
 
 #ifndef __OPERACIONESERV_H_H__
 #define __OPERACIONESERV_H_H__
 
+int enviar_mensaje(int nroPuerto, struct hostent *he, char *mensaje);
 
-int Abrir_Socket(int nroPuerto, char *nameServer);
+int Abrir_Socket(int nroPuerto, struct hostent *he);
 
 char* Pedir_Memoria(int tam);
 
 char* Dar_Formato(char *mensaje);
+
+int recuperar(int nroPuerto, struct hostent *he);
 
 #endif

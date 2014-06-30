@@ -1,18 +1,37 @@
+/**
+  * Declaracion de las funciones y constantes del programa svr_c
+  *
+  * @file    Operacionesvr_c.c
+  * @author  Luiscarlo Rivera 09-11020, Daniel Leones 09-1097
+  *
+  */
 #include "Operacionesvr_c.h"
 
-int Abrir_Socket(int nroPuerto,char *nameServer) {
+
+/**
+ * Envia un mensaje al servidor
+ * @param  nroPuerto  Número del puerto del servidor
+ * @param  nameServer Nombre o dirección donde se ejecute el servidor
+ * @param  mensaje Mensaje a enviar al servidor
+ * @return 0 si se envió el mensaje, 1 si falló
+ */
+int enviar_mensaje(int nroPuerto,struct hostent *he,char *mensaje) {
   int sockfd; /* descriptor para el socket */
+  int numbytes; /* conteo de bytes a escribir */
   struct sockaddr_in their_addr; /* direccion IP y numero de puerto local */
-  struct hostent *he; /* para obtener nombre del host */
+  //  struct hostent *he; /* para obtener nombre del host */
 
   /* convertimos el hostname a su direccion IP */
-  if ((he=gethostbyname(nameServer)) == NULL) {
-    perror("gethostbyname");
-    exit(1);
-  }
+  /* if ((he=gethostbyname(nameServer)) == NULL) { */
+  /*   perror("gethostbyname"); */
+  /*   //    exit(1); */
+  /*   return -1; */
+  /* } */
+
   if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
     perror("socket");
-    exit(2);
+    //    exit(2);
+    return -1;
   }
   
   /* a donde mandar */
@@ -24,7 +43,43 @@ int Abrir_Socket(int nroPuerto,char *nameServer) {
   /* Ordenar conexión */
   if (connect(sockfd,(struct sockaddr *) &their_addr,sizeof(their_addr))){
     perror("Imposible conectarse");
-    exit(3);
+    //    exit(3);
+    return -1;
+  }
+
+  //  sockfd=Abrir_Socket(nroPuerto,nameServer);
+  
+  if ((numbytes=send(sockfd,mensaje,strlen(mensaje),0))==-1){
+    perror("Error de envio");
+    //    exit(4);
+    return -1;
+  }
+  /* cierro socket */  
+  close(sockfd);   
+  return 0; 
+}
+
+int Abrir_Socket(int nroPuerto,struct hostent *he) {
+  int sockfd; /* descriptor para el socket */
+  struct sockaddr_in their_addr; /* direccion IP y numero de puerto local */
+
+  if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+    perror("socket");
+    //    exit(2);
+    return -1;
+  }
+  
+  /* a donde mandar */
+  their_addr.sin_family = AF_INET; /* usa host byte order */
+  their_addr.sin_port = htons(nroPuerto); /* usa network byte order */
+  their_addr.sin_addr = *((struct in_addr *)he->h_addr);
+  bzero(&(their_addr.sin_zero), 8); /* pone en cero el resto */
+  
+  /* Ordenar conexión */
+  if (connect(sockfd,(struct sockaddr *) &their_addr,sizeof(their_addr))){
+    perror("Imposible conectarse");
+    //    exit(3);
+    return -1;
   }
   return sockfd; 
 }
@@ -46,4 +101,20 @@ char* Dar_Formato(char *mensaje){
   sprintf(msj,"%d ATM %s %s", getpid(),output,mensaje);
   free(mensaje);
   return msj;
+}
+
+int recuperar(int nroPuerto, struct hostent *he){
+  FILE *archRec = fopen(RECUPERA,"r");
+  char *mensaje = Pedir_Memoria(BUFFER_LEN);
+  while (feof(archRec)==0){    
+    sleep(1);
+    fgets(mensaje,BUFFER_LEN,archRec);
+    mensaje[strlen(mensaje)-1]='\0';
+    printf("%s\n",mensaje);
+    if (enviar_mensaje(nroPuerto,he,mensaje)==-1)
+      return -1;
+  }
+  fclose(archRec);
+  free(mensaje);
+  return 0;
 }

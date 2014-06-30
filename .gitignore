@@ -1,6 +1,7 @@
 # -*- mode: gitignore; -*-
 svr_s
 svr_c
+config.doxy
 *~
 \#*\#
 /.emacs.desktop

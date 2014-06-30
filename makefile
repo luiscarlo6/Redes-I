@@ -1,4 +1,4 @@
-#Makefile para svr_s
+#Makefile para svr_c svr_c
 #Archivo usado para compilar el programa
 #Autores : 	Luiscarlo Rivera 09-11020
 #		Daniel Leones 09-10977

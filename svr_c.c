@@ -1,16 +1,21 @@
-/*
- * Ejemplo de cliente de chat simple con datagramas (UDP).
- *
- * 
- * 
- *
- */
+/**
+  * Implementación del cliente de un cajero automatico que se conecta con el servidor svr_s
+  *
+  * @file    svr_c.c
+  * @author  Luiscarlo Rivera 09-11020, Daniel Leones 09-1097
+  *
+  */
 #include "Operacionesvr_c.h"
 int main(int argc, char *argv[])
 {
+  int sockfd;
+  int errConex;
+  int inicio;
   int nroPuerto=0;
-  int sockfd; /* descriptor a usar con el socket */
-  int numbytes; /* conteo de bytes a escribir */
+  struct hostent *he;
+  int enRecuperacion = FALSE;
+  char *mensajeRecuperacion;
+  FILE *archRec;
   char *nameServer=NULL; /*Para guardar el nombre del servidor*/
   char *mensaje=NULL;    /*Para guardar el mensaje a enviar recibido por entrada estandar*/
  
@@ -28,6 +33,28 @@ int main(int argc, char *argv[])
     return FALSE;
   }
   memset(mensaje, 0, sizeof(mensaje));
+
+  mensajeRecuperacion = Pedir_Memoria(BUFFER_LEN);
+  if (!mensajeRecuperacion){
+    return FALSE;
+  }
+  memset(mensaje, 0, sizeof(mensaje));
+
+    /* convertimos el hostname a su direccion IP */
+  if ((he=gethostbyname(nameServer)) == NULL) {
+    perror("gethostbyname");
+    //    exit(1);
+    return -1;
+  } 
+  
+  archRec = fopen(RECUPERA,"r");
+  if (archRec != NULL){
+    fclose(archRec);
+    recuperar(nroPuerto, he);
+    system("rm recuperacion.txt");
+  }
+
+  
   while(TRUE){
     sleep(1);
     fflush(stdin);
@@ -36,22 +63,45 @@ int main(int argc, char *argv[])
     if (strncmp(mensaje,"",1)==0){
       break;
     }
-    mensaje = Dar_Formato(mensaje);
+    mensaje = Dar_Formato(mensaje);    
     printf("%s\n",mensaje);
-
-
-    sockfd=Abrir_Socket(nroPuerto,nameServer);
-
-    if ((numbytes=send(sockfd,mensaje,strlen(mensaje),0))==-1){
-      perror("Error de envio");
-      exit(4);
+    
+    if (!enRecuperacion){
+      errConex = enviar_mensaje(nroPuerto,he,mensaje);
+      if (errConex == -1){
+	//	start = clock();
+	inicio = 0;
+	enRecuperacion = TRUE;
+	archRec = fopen(RECUPERA,"a");
+	fprintf(archRec,"%s\n",mensaje);
+	continue;
+      }
     }
-    /* cierro socket */  
-    close(sockfd);   
+    else{
+      fprintf(archRec,"%s\n",mensaje);
+      sockfd = Abrir_Socket(nroPuerto,he);
+      if (sockfd!=-1){
+	close(sockfd);
+	fclose(archRec);
+	recuperar(nroPuerto, he);
+	system("rm recuperacion.txt");
+	enRecuperacion=FALSE;
+	continue;
+      }
+      inicio++;
+      if (inicio >= 5){
+	fclose(archRec);
+	break;
+      }
+    }
   }
-
+  /* start = clock(); */
+  /* diff = clock() - start; */
+  /* segs = (diff * 1000 / CLOCKS_PER_SEC)/1000; */
+  free(mensajeRecuperacion);
   free(mensaje);
   free(nameServer);
   exit (0);
 }
+
 
