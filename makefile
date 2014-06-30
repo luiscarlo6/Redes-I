@@ -1,4 +1,4 @@
-#Makefile para svr_c svr_c
+#Makefile para svr_s
 #Archivo usado para compilar el programa
 #Autores : 	Luiscarlo Rivera 09-11020
 #		Daniel Leones 09-10977
@@ -7,7 +7,7 @@ CC = gcc
 RMFLAGS = -fv 
 #CFLAGS = -g -pthread -pedantic -Wextra -Wall -ggdb -Wunreachable-code 
 CFLAGS = -g -pthread -Wall -ggdb
-OBJS1 = Operacionesvr_s.o svr_s.o Entrada_s.o
+OBJS1 = Operacionesvr_s.o svr_s.o Entrada_s.o ManejarSenal.o
 PROG1 = svr_s
 PROG2 = svr_c
 OBJS2 = svr_c.o Operacionesvr_c.o Entrada_c.o

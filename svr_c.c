@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 	continue;
       }
       inicio++;
-      if (inicio >= 5){
+      if (inicio >= 300){
 	fclose(archRec);
 	break;
       }

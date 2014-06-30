@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <netdb.h>
 #include <pthread.h>
+#include <time.h>
 #define SERVER_PORT 4321
 #define BUFFER_LEN 1024
 #define MAXMENSAJE 100
@@ -67,6 +68,12 @@ int procesarMensaje(FILE *bitacoraA, FILE* bitacoraG,
 
 Msg* modoRecuperacion(int *recuperar, Args *regCliente);
 
+Msg* contruirDatosSalientes(int longiMensaje);
+
+char* Pedir_Memoria(int tam);
+
+Msg* contruirDatosSalientesR(int tamArreglo);
+
 int destruirDatosEntrantes(Args *caj);
 
 int destruirResumen(char** resu, int tam);
@@ -74,6 +81,8 @@ int destruirResumen(char** resu, int tam);
 int destruirInformes(Msg *caj, int tam);
 
 int compararMensajes(char *palabra, char *p);
+
+void manejarClienteCaido(int err, struct sockaddr_in idCliente);
 
 int sendmail(const char *to, const char *from, const char *subject, const char *message);
 

@@ -1,11 +1,11 @@
-/*
- * Ejemplo de server de chat simple con datagramas (UDP).
- *
- * Leandro Lucarella - Copyleft 2004
- * Basado en otros ejemplos públicos.
- *
- */
+/**
+  * Implementación del servidor svr_s para monitoreo de alarmas de 
+  * ATMs.
+  * @file    svr_s.c
+  * @author  Luiscarlo Rivera 09-11020, Daniel Leones 09-10977
+  */
 #include "Operacionesvr_s.h"
+#include "ManejarSenal.h"
 #include "Entrada_s.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,6 +16,7 @@
 #include <arpa/inet.h>
 #include <sys/types.h>
 #include <pthread.h>
+#include <signal.h>
 #define NROMAX_HILOS 1000
 #define MAXNOMARCHIVO 30
 #define FALSE 0
@@ -33,12 +34,15 @@ int main(int argc, char *argv[]) {
   char *archSalida=NULL;
   char nomBitacoraG[MAXNOMARCHIVO];
   char nomBitacoraA[MAXNOMARCHIVO];
-  int nrocliente=0, nroPuerto=0, i=0, j=0, enServicio=TRUE;
+  int nrocliente=0, nroPuerto=0, i=0, j=0, enServicio=TRUE, err=0;
   pthread_mutex_t candado = PTHREAD_MUTEX_INITIALIZER;
 
   /* addr_len contendra el taman~o de la estructura sockadd_in y numbytes el
    * numero de bytes recibidos */
   socklen_t addr_len=0;
+
+  /*Manejador de conexiones perdidas*/
+  signal(SIGPIPE,manejador1);
 
   /*Buffer para guardar el nombre del archivo de la bitacora*/
   if ((archSalida=(char*)malloc(sizeof(char)*MAXNOMARCHIVO))==NULL) {    
@@ -87,8 +91,10 @@ int main(int argc, char *argv[]) {
     addr_len = sizeof(their_addr);
     /*Se atienden las solicitudes de conexion de cada cliente */
     if ((clienteSockfd=accept(sockfd,(struct sockaddr *) &their_addr, &addr_len))== -1)	{
+    	err=errno;
+    	manejarClienteCaido(err,their_addr);
       perror("accept");
-      exit(5);
+      /*exit(5);*/
     }
     /*Crear estructuras de parametros para los hilos*/		
     asignarDatosEntrantes(&datosEntrantes[nrocliente],
@@ -103,21 +109,25 @@ int main(int argc, char *argv[]) {
     nrocliente++;
     for (i = 0; i < nrocliente; i++) {
       if (0!=pthread_join(clienteHilos[i],(void **) &informes[i])) {
-	perror("pthread_join");
-	enServicio=FALSE;
+      	perror("pthread_join");
+      	enServicio=FALSE;
       }
       /*No se puede usar destruirDatosEntrantes parece que destruye la posicion del arreglo*/
       destruirDatosEntrantes(&datosEntrantes[i]);
-      if (informes[i]->recuperacion){
-	for (j = 0; j < informes[i]->nroMensajes; j++) {
-	  printf("Mensaje transmitido al servidor: %s\n", informes[i]->mensajeArreglo[j]);
-	}
-      } else {
-	printf("Mensaje transmitido al servidor: %s\n", informes[i]->mensaje);
-      }    		
-      /*Enviar por correo las alarmas*/
-      destruirInformes(informes[i],informes[i]->nroMensajes);   
-      nrocliente--;
+      if (informes[i]!=NULL){
+	      if (informes[i]->recuperacion){
+	      	for (j = 0; j < informes[i]->nroMensajes; j++) {
+	      	  //printf("Mensaje transmitido al servidor: %s\n", informes[i]->mensajeArreglo[j]);
+		  sendmail(TO,FROM,SUBJECT, informes[i]->mensajeArreglo[j]);
+	      	}
+	      } else {
+		       //printf("Mensaje transmitido al servidor: %s\n", informes[i]->mensaje);
+		sendmail(TO,FROM,SUBJECT, informes[i]->mensaje);
+	      }    		
+	      /*Enviar por correo las alarmas*/
+	      destruirInformes(informes[i],informes[i]->nroMensajes);      
+	    }
+	    nrocliente--;
     }	
   }
   pthread_mutex_destroy(&candado);

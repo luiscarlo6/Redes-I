@@ -1,10 +1,13 @@
+/**
+  * Implementacion de los parámetros de entrada de svr_s
+  *
+  * @file    Entrada_c.c
+  * @author  Luiscarlo Rivera 09-11020, Daniel Leones 09-10977
+  *
+  */
+
 #include "Entrada_s.h"
 
-/* Función: imprime_ayuda
-	Entrada: Cadena de caracteres
-	Salida: Nula
-	Descripcion: Imprime en la linea de comando ayuda sobre el uso del programa
-*/
 void imprime_ayuda(char* nombre) {
     printf("Uso: %s -l z -b y [-h]\n", nombre);
     printf("Descripción: programa servidor SVR.\n");
@@ -13,11 +16,14 @@ void imprime_ayuda(char* nombre) {
            "    -b y 	Nombre del archivo bitacora\n");
 }
  
-/* Función: Parametros
-	Entrada: *nro_jugadores, *nro_tiradas,*semilla, argc: Nro de parametros de Main,  **argv: Arreglo de entrada de Main
-	Salida: *nro_jugadores, *nro_tiradas,*semilla. TRUE: Exito. Errores: Finaliza el programa
-	Descripcion: Procesa el pasaje de parametros por linea de comandos según la convencion de los sistemas Linux
-*/ 
+/**
+ * Filtra los parametros del programa dado los flags -l -b -h
+ * @param  arch String Nombre base de archivo.
+ * @param  nroPuerto int no inicializado que contendra el numero de puerto
+ * @param  argc Número de parámetros del programa invocador
+ * @param  argv Parámetros del programa invocador
+ * @return 0 e imprime ayuda si falló, 1 si tuvo exito
+ */
 int Parametros(char *arch, int *nroPuerto, int argc, char **argv) {
   
    int opciones;
