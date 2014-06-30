@@ -11,6 +11,9 @@
 #define BUFFER_LEN 1024
 #define MAXNOSERVIDOR 30
 #define RECUPERA "recuperacion.txt"
+#define TO "09-11020@ldc.usb.ve"
+#define FROM "svr_c"
+#define SUBJECT "Alerta"
 
 #ifndef __OPERACIONESERV_H_H__
 #define __OPERACIONESERV_H_H__
@@ -24,5 +27,7 @@ char* Pedir_Memoria(int tam);
 char* Dar_Formato(char *mensaje);
 
 int recuperar(int nroPuerto, struct hostent *he);
+
+int sendmail(const char *to, const char *from, const char *subject, const char *message);
 
 #endif

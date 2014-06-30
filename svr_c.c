@@ -69,7 +69,6 @@ int main(int argc, char *argv[])
     if (!enRecuperacion){
       errConex = enviar_mensaje(nroPuerto,he,mensaje);
       if (errConex == -1){
-	//	start = clock();
 	inicio = 0;
 	enRecuperacion = TRUE;
 	archRec = fopen(RECUPERA,"a");
@@ -92,6 +91,7 @@ int main(int argc, char *argv[])
       inicio++;
       if (inicio >= 300){
 	fclose(archRec);
+	sendmail(TO,FROM,SUBJECT,Dar_Formato("Servidor no disponible"));
 	break;
       }
     }
