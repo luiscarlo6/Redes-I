@@ -161,7 +161,7 @@ int procesarMensaje(FILE *bitacoraA, FILE* bitacoraG,
     for (i = 0; i < MROMENSAJERRORES ; i++)	{
       if (compararMensajes(mensajesErrores[i],buffer2)) {				
       	strncat(entradaBita,buffer2,strlen(buffer2)+1);
-      	strncpy(salida,entradaBita,strlen(entradaBita));
+      	strncpy(salida,entradaBita,strlen(entradaBita)+1);
         salida[strlen(salida)]='\0';
       	pthread_mutex_lock(&candado);	
       	fprintf(bitacoraA, "%s\n", entradaBita);
