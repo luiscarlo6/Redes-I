@@ -117,11 +117,11 @@ int main(int argc, char *argv[]) {
       if (informes[i]!=NULL){
 	      if (informes[i]->recuperacion){
 	      	for (j = 0; j < informes[i]->nroMensajes; j++) {
-	      	  //printf("Mensaje transmitido al servidor: %s\n", informes[i]->mensajeArreglo[j]);
+	      	  printf("Mensaje transmitido al servidor: %s\n", informes[i]->mensajeArreglo[j]);		  
 		  sendmail(TO,FROM,SUBJECT, informes[i]->mensajeArreglo[j]);
 	      	}
 	      } else {
-		       //printf("Mensaje transmitido al servidor: %s\n", informes[i]->mensaje);
+		printf("Mensaje transmitido al servidor: %s\n", informes[i]->mensaje);
 		sendmail(TO,FROM,SUBJECT, informes[i]->mensaje);
 	      }    		
 	      /*Enviar por correo las alarmas*/

@@ -1,0 +1,28 @@
+24562 ATM 10:47 29/06/14 Communication Offline 
+24562 ATM 10:47 29/06/14 Low Cash alert 
+24562 ATM 10:47 29/06/14 Running Out of notes in cassette 50 
+4089 ATM 09:24 30/06/14 Communication Offline 
+4089 ATM 09:24 30/06/14 Low Cash alert 
+4089 ATM 09:24 30/06/14 Running Out of notes in cassette 50 
+4089 ATM 09:24 30/06/14 Service mode entered 
+4750 ATM 09:20 30/06/14 Communication Offline 
+4750 ATM 09:20 30/06/14 Low Cash alert 
+4750 ATM 09:20 30/06/14 Running Out of notes in cassette 50 
+4750 ATM 09:20 30/06/14 Service mode entered 
+4089 ATM 09:24 30/06/14 Communication Offline 
+4089 ATM 09:24 30/06/14 Low Cash alert 
+4089 ATM 09:24 30/06/14 Low Cash alert
+4089 ATM 09:24 30/06/14 Running Out of notes in cassette 50 
+4089 ATM 09:24 30/06/14 Service mode entered 
+4750 ATM 09:20 30/06/14 Communication Offline 
+4750 ATM 09:20 30/06/14 Low Cash alert 
+4750 ATM 09:20 30/06/14 Running Out of notes in cassette 50 
+4750 ATM 09:20 30/06/14 Service mode entered 
+4890 ATM 09:23 30/06/14 Communication Offline 
+4890 ATM 09:23 30/06/14 Low Cash alert 
+4890 ATM 09:23 30/06/14 Running Out of notes in cassette 50 
+4890 ATM 09:24 30/06/14 Service mode entered 
+4893 ATM 09:24 30/06/14 Communication Offline 
+4893 ATM 09:24 30/06/14 Low Cash alert 
+4893 ATM 09:24 30/06/14 Running Out of notes in cassette 50 
+4893 ATM 09:24 30/06/14 Service mode entered 
