@@ -75,7 +75,7 @@ void* Atender_Clientes(void* dat)
     pthread_exit(NULL); 
   }
 
-  alarma=Pedir_Memoria(numbytes);
+  alarma=Pedir_Memoria(numbytes+1);
   if (alarma==NULL){
     fprintf(stderr, "No hay memoria disponible: %s\n", strerror(errno));
     pthread_exit(NULL); 
@@ -161,7 +161,7 @@ int procesarMensaje(FILE *bitacoraA, FILE* bitacoraG,
     for (i = 0; i < MROMENSAJERRORES ; i++)	{
       if (compararMensajes(mensajesErrores[i],buffer2)) {				
       	strncat(entradaBita,buffer2,strlen(buffer2)+1);
-      	strncpy(salida,buffer2,strlen(buffer2)+1);
+      	strncpy(salida,entradaBita,strlen(entradaBita));
         salida[strlen(salida)]='\0';
       	pthread_mutex_lock(&candado);	
       	fprintf(bitacoraA, "%s\n", entradaBita);
